@@ -27,8 +27,15 @@ export interface IAppProps {
           // Get the attachment at the current index.
           var attachment = attachments[i];
           
-          // Display the attachment name.
-          console.log(attachment.name);
+          Office.context.mailbox.item.getAttachmentContentAsync(attachment.id, (result) => {
+            if (result.status === Office.AsyncResultStatus.Succeeded) {
+                var content = result.value.content;
+                setFormData(prevState => ({ ...prevState, attachments: [...prevState.attachments, { base64: content, name: attachment.name, type: attachment.attachmentType }] }));
+            }
+            else {
+                console.error(result.error.message);
+            }
+        });
         }
       }
       setIsOfficeInitialized(true);
