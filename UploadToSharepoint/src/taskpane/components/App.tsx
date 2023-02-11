@@ -11,7 +11,7 @@ export interface IAppProps {
 }
 
  const App:React.FunctionComponent<IAppProps> = (props: IAppProps) => {
-  const [isOfficeInitialized, setIsOfficeInitialized] = useState<boolean>(false);
+  const [isShowSpinner, setIsShowSpinner] = useState<boolean>(false);
   const [formData, setFormData] = useState<Models.FormData>(new Models.FormData());
   
   useEffect(() => {
@@ -38,7 +38,7 @@ export interface IAppProps {
         });
         }
       }
-      setIsOfficeInitialized(true);
+      setIsShowSpinner(true);
     };
   });
 
@@ -53,7 +53,7 @@ export interface IAppProps {
   return (
     <>
       {
-        !isOfficeInitialized &&
+        !isShowSpinner &&
           <Spinner />
       }
       <div className="ms-welcome">
