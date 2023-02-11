@@ -15,11 +15,11 @@ const Form: React.FunctionComponent<IFormProps> = (props: IFormProps) => {
     }
     return (
         <>
-            <TextField title='titolo' value={ props.formData.titolo } onChange={_onChange}/>
-            <TextField title='mittente' value={ props.formData.mittente }/>
-            <TextField title='nomeCliente' value={ props.formData.nomeCliente }/>
-            <TextField title='codiceCliente' value={ props.formData.codiceCliente }/>
-            <DatePicker title='dataScadenza' value={ props.formData.dataScadenza }/>
+            <TextField title='Title' value={ props.formData.Title } onChange={_onChange}/>
+            <TextField title='Sender' value={ props.formData.Sender }/>
+            <TextField title='CustomerName' value={ props.formData.CustomerName }/>
+            <TextField title='CustomerCode' value={ props.formData.CustomerCode }/>
+            <DatePicker title='ExpirationDate' value={ props.formData.ExpirationDate }/>
         </>
     );
 };

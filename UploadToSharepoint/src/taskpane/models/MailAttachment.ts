@@ -1,5 +1,6 @@
 export class MailAttachment {
-    base64: string;
-    name: string;
-    type: string;
+    Base64: string;
+    Name: string;
+    Type: string;
+    Id: string;
 }
