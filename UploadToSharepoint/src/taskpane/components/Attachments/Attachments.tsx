@@ -1,4 +1,4 @@
-import { Icon, PrimaryButton } from "@fluentui/react";
+import { Icon, Label, PrimaryButton } from "@fluentui/react";
 import * as React from "react";
 import * as Models from "../../models";
 export interface IAttachmentsProps {
@@ -9,16 +9,20 @@ export interface IAttachmentsProps {
 
 const Attachments: React.FunctionComponent<IAttachmentsProps> = (props: IAttachmentsProps) => {
     return (
-    <div className="attachments">
-        <ul>
-        {
-            props.attachments.map((attachment, i) => {
-                return <li key={ i }>{ attachment.Name } <Icon className="cancelIcon" onClick={ () => { props.removeAttachment(attachment.Id); } } iconName="Cancel" /></li>;
-            })
-        }
-        </ul>
-        <PrimaryButton onClick={() => { props.restoreAttachments(); }}/>
-    </div>);
+        <>
+            <Label>Allegati</Label>
+            <div className="attachmentsContainer">
+                <ul className="attachments">
+                {
+                    props.attachments.map((attachment, i) => {
+                        return <li key={ i }>{ attachment.Name } <Icon className="cancelIcon" onClick={ () => { props.removeAttachment(attachment.Id); } } iconName="Cancel" /></li>;
+                    })
+                }
+                </ul>
+                <PrimaryButton onClick={() => { props.restoreAttachments(); }}>Ripristina</PrimaryButton>
+            </div>
+        </>
+    );
 }
 
 export default Attachments;

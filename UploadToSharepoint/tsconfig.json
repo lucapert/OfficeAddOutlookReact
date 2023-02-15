@@ -8,7 +8,7 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "noImplicitReturns": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "outDir": "dist",
     "removeComments": false,
     "sourceMap": true,

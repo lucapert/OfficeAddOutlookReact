@@ -6,6 +6,8 @@ import * as Models from "../models";
 import Form from "./Form/Form";
 import Buttons from "./Buttons/Buttons";
 import Attachments from "./Attachments/Attachments";
+import { getWebSite } from "../helpers/sso-helper";
+
 
 export interface IAppProps {
   title: string;
@@ -74,23 +76,29 @@ export interface IAppProps {
   }
   
   const _uploadToSharepoint = () => {
-
+    getWebSite((response) => {
+      console.log(response);
+    });
   };
   
   return (
     <>
+      <Header title={props.title} />
       {
         isShowSpinner &&
           <Spinner size={ SpinnerSize.large } />
       }
       {
-        !isShowSpinner &&
-        <div className="ms-welcome">
-          <Header title={props.title} />
+        (!isShowSpinner && formData.Attachments.length > 0) &&
+        <div className="ms-welcome formContainer">
           <Form formData={ formData } updateForm={ _updateFormData }  />
           <Attachments restoreAttachments={ _restoreAttachments } attachments={ formData.Attachments } removeAttachment={ _removeAttachment } />
           <Buttons uploadToSharepoint={ _uploadToSharepoint } />
         </div>
+      }
+      {
+        (!isShowSpinner && allAttachments.length === 0) &&
+        <div className="noAttachments">Nessun allegato associato alla mail selezionata</div>
       }
     </>
   );

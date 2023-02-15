@@ -5,4 +5,16 @@
      margin: 0;
      padding: 0;
  }
+
+ .ms-welcome__header {
+    padding: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+ }
  

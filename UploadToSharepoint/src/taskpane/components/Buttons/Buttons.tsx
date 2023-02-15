@@ -7,7 +7,9 @@ export interface IButtonsProps {
 
 const Buttons: React.FunctionComponent<IButtonsProps> = (props: IButtonsProps) => {
     return (
-        <PrimaryButton onClick={() => { props.uploadToSharepoint(); }}>Carica allegati su sharepoint</PrimaryButton>
+        <div className='buttonsContainer'>
+            <PrimaryButton onClick={() => { props.uploadToSharepoint(); }}>Carica allegati su sharepoint</PrimaryButton>
+        </div>
     );
 };
 

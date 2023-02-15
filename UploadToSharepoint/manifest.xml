@@ -101,5 +101,13 @@
         <bt:String id="ActionButton.Tooltip" DefaultValue="Perform an action when clicked."/>
       </bt:LongStrings>
     </Resources>
+    <WebApplicationInfo>
+        <Id>a1a23c1a-f36a-4014-b13c-a21d71197984</Id>
+        <Resource>api://localhost:3000/2f3a1e69-c586-4a12-b883-4f582eb8322b</Resource>
+        <Scopes>
+          <Scope>User.Read</Scope>
+          <Scope>profile</Scope>
+        </Scopes>
+      </WebApplicationInfo>
   </VersionOverrides>
 </OfficeApp>

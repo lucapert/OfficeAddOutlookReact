@@ -7,7 +7,10 @@ export interface IHeaderProps {
 const Header: React.FunctionComponent<IHeaderProps> = (props: IHeaderProps) => {
   const { title } = props;
   return (
-    <div className="header">{ title }</div>
+    <header className="ms-welcome__header ms-bgColor-neutralLighter">
+      <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+      <h1 className="ms-font-su">Carica Allegati</h1>
+    </header> 
   );
 }
 
