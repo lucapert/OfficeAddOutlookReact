@@ -6,8 +6,8 @@ import * as Models from "../models";
 import Form from "./Form/Form";
 import Buttons from "./Buttons/Buttons";
 import Attachments from "./Attachments/Attachments";
-import { getWebSite } from "../helpers/sso-helper";
-
+import { LogLevel, PublicClientApplication } from "@azure/msal-browser";
+import TokenManager from "../managers/TokenManager";
 
 export interface IAppProps {
   title: string;
@@ -20,6 +20,8 @@ export interface IAppProps {
   
   useEffect(() => {
     Office.initialize =  async () => {
+      const token = await TokenManager.GetClientCredentialToken();
+      
       var item = Office.context.mailbox.item;
       // Get the current item from the item that is displayed in the reading pane.
       var attachments = item.attachments;
@@ -76,9 +78,9 @@ export interface IAppProps {
   }
   
   const _uploadToSharepoint = () => {
-    getWebSite((response) => {
-      console.log(response);
-    });
+    // We fall back to Dialog API for any error.
+    const url = "/fallbackauthdialog.html";
+    // await showLoginPopup(url);
   };
   
   return (

@@ -1,0 +1,15 @@
+.attachmentsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    border: 1px solid;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.attachments {
+    margin-right: 10px;
+}
+
+.cancelIcon {
+    cursor: pointer;
+}
