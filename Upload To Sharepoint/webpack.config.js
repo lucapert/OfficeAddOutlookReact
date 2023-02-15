@@ -3,6 +3,7 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const nodeExternals = require("webpack-node-externals");
+const webpack = require("webpack");
 
 const urlDev = "https://localhost:3000/";
 const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
@@ -14,11 +15,11 @@ module.exports = async (env, options) => {
       devtool: "source-map",
       entry: {
         polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-        taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
-        commands: "./src/commands/commands.js",
+        vendor: ["react", "react-dom", "core-js", "@fluentui/react"],
+        taskpane: ["react-hot-loader/patch", "./src/taskpane/index.js", "./src/taskpane/taskpane.html"],
       },
       resolve: {
-        extensions: [".html", ".js"],
+        extensions: [".ts", ".tsx", ".html", ".js"],
         fallback: {
           buffer: require.resolve("buffer/"),
           http: require.resolve("stream-http"),
@@ -29,6 +30,19 @@ module.exports = async (env, options) => {
       module: {
         rules: [
           {
+            test: /\.jsx?$/,
+            use: [
+              "react-hot-loader/webpack",
+              {
+                loader: "babel-loader",
+                options: {
+                  presets: ["@babel/preset-env"],
+                },
+              },
+            ],
+            exclude: /node_modules/,
+          },
+          {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
@@ -37,6 +51,11 @@ module.exports = async (env, options) => {
                 presets: ["@babel/preset-env"],
               },
             },
+          },
+          {
+            test: /\.tsx?$/,
+            use: "ts-loader",
+            exclude: /node_modules/,
           },
           {
             test: /\.html$/,
@@ -67,6 +86,9 @@ module.exports = async (env, options) => {
           filename: "fallbackauthdialog.html",
           template: "./src/helpers/fallbackauthdialog.html",
           chunks: ["polyfill", "fallbackauthdialog"],
+        }),
+        new webpack.ProvidePlugin({
+          Promise: ["es6-promise", "Promise"],
         }),
         new CopyWebpackPlugin({
           patterns: [

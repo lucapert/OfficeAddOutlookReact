@@ -1,0 +1,11 @@
+.formContainer {
+    padding: 0 20px;
+}
+.noAttachments {
+    text-align: center;
+}
+.attachmentsButtonsContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}

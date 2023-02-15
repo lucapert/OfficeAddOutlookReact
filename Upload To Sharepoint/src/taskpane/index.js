@@ -1,18 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// import { checkUserIsSharepointUser } from "../helpers/middle-tier-calls";
-
-// /* eslint-disable no-undef */
-// Office.onReady((info) => {
-//   if (info.host === Office.HostType.Outlook) {
-//     document.getElementById("getProfileButton").onclick = run;
-//   }
-// });
-
-// export async function run() {
-//   debugger;
-//   const result = await checkUserIsSharepointUser(Office?.context?.mailbox?.userProfile?.emailAddress);
-// }
-import App from "./components/App";
+import App from "./components/App.tsx";
 import { AppContainer } from "react-hot-loader";
 import { initializeIcons } from "@fluentui/font-icons-mdl2";
 import * as React from "react";
@@ -37,11 +23,11 @@ const render = (Component) => {
 /* Render application after Office initializes */
 Office.onReady(() => {
   isOfficeInitialized = true;
-  render(<App />);
+  render(App);
 });
 
 /* Initial render showing a progress bar */
-render(<App />);
+render(App);
 
 if (module.hot) {
   module.hot.accept("./components/App", () => {
