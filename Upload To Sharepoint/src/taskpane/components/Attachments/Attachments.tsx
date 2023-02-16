@@ -3,7 +3,7 @@ import * as React from "react";
 import * as Models from "../../models";
 export interface IAttachmentsProps {
     attachments: Models.MailAttachment[];
-    removeAttachment: (e) => void; 
+    removeAttachment: (e: any) => void; 
     restoreAttachments: () => void;
 }
 

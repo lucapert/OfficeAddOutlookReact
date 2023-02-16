@@ -9,7 +9,7 @@ interface IFormProps {
 
 
 const Form: React.FunctionComponent<IFormProps> = (props: IFormProps) => {
-    const _onChange = (e, newValue: string) => {
+    const _onChange = (e: any, newValue: any) => {
         const target = (e.target as any as HTMLInputElement);
         props.updateForm(target.title, newValue);
     }

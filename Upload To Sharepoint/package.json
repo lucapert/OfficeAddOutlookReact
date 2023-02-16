@@ -80,7 +80,6 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "4.10.0"
   },
-  "prettier": "office-addin-prettier-config",
   "browserslist": [
     "ie 11"
   ]

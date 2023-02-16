@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const nodeExternals = require("webpack-node-externals");
@@ -17,6 +15,7 @@ module.exports = async (env, options) => {
         polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
         vendor: ["react", "react-dom", "core-js", "@fluentui/react"],
         taskpane: ["react-hot-loader/patch", "./src/taskpane/index.js", "./src/taskpane/taskpane.html"],
+        fallbackauthdialog: "./src/helpers/fallbackauthdialog.js",
       },
       resolve: {
         extensions: [".ts", ".tsx", ".html", ".js"],

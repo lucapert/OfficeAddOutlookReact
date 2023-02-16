@@ -1,10 +1,10 @@
 import { MailAttachment } from "./MailAttachment";
 
 export class FormData {
-    public Title: string = null;
-    public Sender: string = null;
-    public CustomerCode: string = null;
-    public CustomerName: string = null;
-    public ExpirationDate: Date = null;
+    public Title: string = "";
+    public Sender: string = "";
+    public CustomerCode: string = "";
+    public CustomerName: string = "";
+    public ExpirationDate: any = null;
     public Attachments: MailAttachment[] = [];
 }

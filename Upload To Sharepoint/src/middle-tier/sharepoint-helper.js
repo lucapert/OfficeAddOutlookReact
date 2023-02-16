@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable prettier/prettier */
-/* eslint-disable no-undef */
 import * as https from "https";
 import { ClientSecretCredential } from "@azure/identity";
 
 async function _getAppToken(){
   let token = null;
-  const clientId = "02babf28-b667-451b-bf2a-1ee08b19f585"; //This is your client ID
+  const clientId = "bd0711c7-d24f-4875-9c50-fb39bf392843"; //This is your client ID
   const clientSecret = "F5y8Q~f183HXsewrKkV4He6McMjlNatrKM8CtddT";
   const tenantId = "7e5f4e90-c792-4b0d-9646-db99c9acea28";
   const credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
-  const scopes = ["02babf28-b667-451b-bf2a-1ee08b19f585/.default"];
+  const scopes = ["bd0711c7-d24f-4875-9c50-fb39bf392843/.default"];
   console.log(clientId);
   try {
     const result = await credentials.getToken(scopes);
