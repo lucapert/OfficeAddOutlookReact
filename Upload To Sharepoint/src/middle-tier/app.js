@@ -56,6 +56,15 @@ app.use("/", indexRouter);
 
 app.get("/checkuserissharepointuser", checkUserIsSharepointUser);
 
+// Get the client side task pane files requested
+app.get("/taskpane.html", async (req, res) => {
+  return res.sendfile("taskpane.html");
+});
+
+app.get("/fallbackauthdialog.html", async (req, res) => {
+  return res.sendfile("fallbackauthdialog.html");
+});
+
 // Catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
