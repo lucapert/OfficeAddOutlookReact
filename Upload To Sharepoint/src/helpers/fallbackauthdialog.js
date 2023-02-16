@@ -79,7 +79,6 @@ async function _processMessage(arg) {
     {
       if (messageFromDialog.status === "success") {
         loginDialog.close();
-        debugger;
         console.log(messageFromDialog.result);
       } else if (messageFromDialog.error === undefined && messageFromDialog.result.errorCode === undefined) {
       } else {

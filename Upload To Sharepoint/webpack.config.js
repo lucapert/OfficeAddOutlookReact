@@ -15,7 +15,6 @@ module.exports = async (env, options) => {
         polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
         vendor: ["react", "react-dom", "core-js", "@fluentui/react"],
         taskpane: ["react-hot-loader/patch", "./src/taskpane/index.js", "./src/taskpane/taskpane.html"],
-        fallbackauthdialog: "./src/helpers/fallbackauthdialog.js",
       },
       resolve: {
         extensions: [".ts", ".tsx", ".html", ".js"],

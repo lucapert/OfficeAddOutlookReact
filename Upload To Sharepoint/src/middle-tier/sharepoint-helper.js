@@ -1,13 +1,15 @@
 import * as https from "https";
 import { ClientSecretCredential } from "@azure/identity";
 
+require("dotenv").config();
+
 async function _getAppToken(){
   let token = null;
-  const clientId = "bd0711c7-d24f-4875-9c50-fb39bf392843"; //This is your client ID
-  const clientSecret = "F5y8Q~f183HXsewrKkV4He6McMjlNatrKM8CtddT";
-  const tenantId = "7e5f4e90-c792-4b0d-9646-db99c9acea28";
+  const clientId = process.env.CLIENT_ID;
+  const clientSecret = process.env.CLIENT_SECRET;
+  const tenantId = process.env.TENANT_ID;
   const credentials = new ClientSecretCredential(tenantId, clientId, clientSecret);
-  const scopes = ["bd0711c7-d24f-4875-9c50-fb39bf392843/.default"];
+  const scopes = process.env.SCOPES.split(",");
   console.log(clientId);
   try {
     const result = await credentials.getToken(scopes);
@@ -22,10 +24,10 @@ async function _getAppToken(){
 
 async function checkUserIsSharepointUser(req, res){
     const appToken = await _getAppToken();
-    const functionCode = "ECN48abCYP3MGfNpXA8NeBr3tOrjsi76BaftGp3VYh7gAzFut2Qzqw==";
+    const functionCode = process.env.FUNCTION_CODE;
     const options = {
       hostname: 'officeaddin-test.azurewebsites.net',
-      path: '/api/HttpTrigger1?code=${functionCode}',
+      path: `/api/HttpTrigger1?code=${functionCode}`,
       method: 'POST',
       headers: {
         Authorization: `Bearer ${appToken}`,

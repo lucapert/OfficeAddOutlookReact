@@ -4,9 +4,7 @@
  * This file is the main Node.js server file that defines the express middleware.
  */
 
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+require("dotenv").config();
 import * as createError from "http-errors";
 import * as path from "path";
 import * as cookieParser from "cookie-parser";
